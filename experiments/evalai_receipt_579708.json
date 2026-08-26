@@ -1,0 +1,13 @@
+{
+  "challenge": 2702,
+  "phase": 5342,
+  "submission_id": 579708,
+  "status": "finished",
+  "overall_top1": 0.728646,
+  "original_set_top1": 0.778713,
+  "additional_set_top1": 0.415309,
+  "method": "Molmo specialist prompt baseline",
+  "artifact_questions": 13370,
+  "submitted_publicly": true,
+  "notes": "EvalAI public Test Phase 5342 receipt; no hosted inference API used."
+}

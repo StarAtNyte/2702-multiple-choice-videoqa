@@ -1,0 +1,16 @@
+{
+  "challenge":2702,
+  "profile":"baptinjean",
+  "model":"CoTracker3 offline",
+  "gpu":"H200",
+  "fix":"native-density sequential frame read (max_frames cap 2000, no subsampling for <=35s clips), per-question try/except so job no longer crashes",
+  "validation_subset":"point_tracking",
+  "processed":15,
+  "correct":1,
+  "accuracy":0.0666666667,
+  "status":"completed_not_selected",
+  "comparison":{"chance_floor":0.20,"prior_cotracker3_64frame_a10g":0.0667,"prior_opencv_optical_flow_prototype":0.333,"prior_opencv_dense":0.0},
+  "diagnosis":"Frame-density/OOM was a real bug (fixed, job completes cleanly now) but was not the accuracy bottleneck: native-density H200 run scored identically to the broken 64-frame run. Manual inspection of all 15 predictions shows no index-collapse pattern (wrong picks spread across all option slots), so the failure is in point localization/tracking fidelity itself, not a parsing or coordinate-indexing bug. Three independent from-scratch tracker implementations (optical-flow x2, CoTracker3 x2) have now all landed at or below the 20% chance floor except one early prototype at 33%.",
+  "decision":"Reject again; do not sink further Modal GPU time into a from-scratch point-tracking specialist without adopting the actual SAM2+AllTracker reference pipeline research identified. Compare against zero-shot Molmo/Qwen3 direct answers on point_tracking-tagged questions before building anything further here.",
+  "modal_app":"ap-vQVjFnPKEMQBrBzJjW9VRl"
+}

@@ -1,0 +1,17 @@
+{
+  "challenge": 2702,
+  "phase": 5342,
+  "submission_id": 580833,
+  "status": "finished",
+  "overall_top1": 0.844353029169783,
+  "original_set_top1": 0.8519257460097155,
+  "additional_set_top1": 0.7969598262757872,
+  "method": "Molmo2 + Gemini 3.7 Flash full replacement",
+  "artifact_questions": 13370,
+  "artifact_source": "artifacts/full_gemini_20260826/test_submission.json",
+  "artifact_sha256": "55d0a1e9baa5564fff552e4da36e009980e0fac4d6b1a50c3823c4fa6402f699",
+  "local_validation": {"expected": 13370, "scored": 13370, "errors": 0},
+  "submitted_publicly": false,
+  "evaluation_mode": "0-shot",
+  "notes": "Full Gemini replacement of both original and additional sets; prior public submission 580630 remains unchanged."
+}

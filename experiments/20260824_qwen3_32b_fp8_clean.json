@@ -1,0 +1,19 @@
+{
+  "challenge":2702,
+  "profile":"baptinjean",
+  "model":"Qwen3-VL-32B-Instruct-FP8",
+  "gpu":"H100",
+  "runtime":"vLLM eager",
+  "frame_config":"native video decode, fps=0.5, max_pixels 512x512",
+  "prompt":"CoT + explicit 'Answer: <letter>' anchor, max_tokens=400 (600 on retry)",
+  "fixes_applied":["per-question try/except (no more silent job-crash)","case-insensitive anchor regex","removed unanchored fallback that silently matched the article 'a' as option A"],
+  "validation_questions":454,
+  "scored":438,
+  "coverage":0.9647577093,
+  "correct":295,
+  "accuracy":0.6735159817,
+  "status":"completed_not_selected",
+  "comparison":{"qwen3_8b":0.6476,"molmo":0.7379,"label_free_router":0.7863,"prior_broken_32b_64frame":0.5308,"prior_broken_32b_corrupted_regex":0.4040},
+  "decision":"Reject as submission candidate; correctly-implemented 32B FP8 still underperforms the Molmo baseline and the label-free router on this pipeline. All three prior bugs (silent crash, case-sensitivity, unanchored-fallback-matches-article-a) are now fixed and documented in RESEARCH.md, so this is a trustworthy final number for this model/config, not an artifact. Does not change the submitted candidate (EvalAI submission 580119, Molmo specialist baseline).",
+  "modal_app":"ap-dwEVndKQ0m74Y33kKMs4Za"
+}

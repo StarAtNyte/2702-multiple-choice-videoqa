@@ -1,0 +1,26 @@
+{
+  "challenge": 2702,
+  "profile": "baptinjean",
+  "artifact": "/2702-multiple-choice-videoqa/predictions/test_submission_final.json",
+  "annotation_sources": ["test_annotations/mc_question_test.json", "mc_vqa_unified_test.json"],
+  "videos": 4988,
+  "questions": 13370,
+  "answers": 13370,
+  "schema_errors": 0,
+  "validation_command": "validate_predictions(combined_original_and_additional_annotations)",
+  "sha256": "e6813179b3ddcef9e57384816cdccee0c6daba92fc7cb35c5a0940d1a2976525",
+  "model": "Molmo2-8B specialist baseline (frozen fallback)",
+  "reproducibility": {
+    "models": ["Molmo2-8B", "Qwen3-VL-8B-Instruct"],
+    "gpu": {"molmo": "A10G", "qwen3_native_video": "A100-80GB"},
+    "frame_sampling": {"molmo": "16 uniform frames/video", "qwen3": "12 frames/video"},
+    "prompt_hash": "267f148f28f486a22627cd28e64ef2ece7d81ec6e8c4e40961478db8034e5535",
+    "native_video_config_hash": "1286cf137add7a0ab0858a9da16d09c8cb6febbcad29eb5b9b26a954e12d8f5d",
+    "routing_rules_hash": "fca420b4171894cc29716ff6fdc49f040c38ac4e46cfa6f4f9f72ba7bb52ff4a",
+    "routing": "label-free question tags: matching/tracking/recognition -> Qwen3; otherwise Molmo",
+    "per_question_evidence": {"validation_questions": 454, "coverage": "complete", "source": "Modal evidence/log artifacts"}
+  },
+  "validation": {"label_free_tag_router": 0.7863, "molmo_v2": 0.7379, "qwen3": 0.6476},
+  "public_submission": {"phase": 5342, "best_submission_id": 579708, "overall": 0.728646, "original": 0.778713, "additional": 0.415309},
+  "notes": "No manual labels or hosted APIs used. Candidate is complete while native Qwen3 test inference remains unavailable."
+}

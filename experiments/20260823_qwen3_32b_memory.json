@@ -1,0 +1,11 @@
+{
+  "challenge":2702,
+  "model":"Qwen3-VL-32B-Instruct",
+  "attempts":[
+    {"gpu":"A100-80GB","quantization":"fp16/auto","status":"OOM","app":"ap-vyx6FqM5jf9BVzt1L9BYsg"},
+    {"gpu":"H100","quantization":"bitsandbytes NF4 4-bit","status":"OOM during weight loading","app":"ap-6zC8dBHymzcqcUWzA5Rh2Z"},
+    {"gpu":"H100","quantization":"bitsandbytes NF4 4-bit; 0.1 fps; 112px","status":"OOM during weight loading","app":"ap-3ZsxETEc0mLsYjgtmDedcw"}
+  ],
+  "decision":"Use official Qwen3-VL-32B-Instruct-FP8 with vLLM/SGLang or a larger-memory GPU; Transformers/bitsandbytes path is not viable on current H100.",
+  "no_submission":true
+}

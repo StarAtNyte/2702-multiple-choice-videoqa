@@ -1,0 +1,15 @@
+{
+  "challenge":2702,
+  "profile":"baptinjean",
+  "model":"Qwen3-VL-32B-Instruct-FP8",
+  "gpu":"H100",
+  "runtime":"vLLM eager",
+  "frame_config":"0.1 fps, max_pixels 512x512",
+  "validation_questions":454,
+  "correct":241,
+  "accuracy":0.5308370044,
+  "status":"completed_not_selected",
+  "comparison":{"qwen3_8b":0.6476,"molmo":0.7379,"label_free_router":0.7863},
+  "decision":"Reject; despite larger model, this vLLM/native-video configuration underperformed local baselines. No test submission.",
+  "modal_app":"ap-cgYpNGPbdAAzeT9U9ff1kf"
+}

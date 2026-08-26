@@ -1,0 +1,13 @@
+{
+  "challenge":2702,
+  "profile":"baptinjean",
+  "model":"CoTracker3 offline",
+  "gpu":"A10G",
+  "validation_subset":"point_tracking",
+  "processed":15,
+  "correct":1,
+  "accuracy":0.0666666667,
+  "status":"completed_not_selected",
+  "decision":"Reject; learned tracking plus HSV circle matching scored below the 33.3% optical-flow prototype.",
+  "modal_app":"ap-HiuIeuj2n547LwusVGINqa"
+}

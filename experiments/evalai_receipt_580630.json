@@ -1,0 +1,26 @@
+{
+  "challenge": 2702,
+  "phase": 5342,
+  "submission_id": 580630,
+  "status": "finished",
+  "overall_top1": 0.781226626776365,
+  "original_set_top1": 0.7787126995142263,
+  "additional_set_top1": 0.7969598262757872,
+  "method": "Molmo2 original + Gemini 3.7 Flash additional",
+  "artifact_questions": 13370,
+  "artifact_source": "artifacts/gemini_additional_20260826/test_submission.json",
+  "artifact_sha256": "6908a61f20c5bbfc637a60337042b282f5a8781cef4e5ce22032f57f170a2523",
+  "local_validation": {
+    "expected": 13370,
+    "scored": 13370,
+    "original_questions": 11528,
+    "additional_questions": 1842,
+    "original_unchanged": true,
+    "exact_id_set": true,
+    "errors": 0
+  },
+  "submitted_publicly": true,
+  "evaluation_mode": "0-shot",
+  "submitted_at": "2026-08-26T01:16:42+05:45",
+  "notes": "Kept the previous submission's original-set answers unchanged and replaced all additional-set answers with completed Gemini outputs."
+}

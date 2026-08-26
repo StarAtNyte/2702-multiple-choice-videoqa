@@ -1,0 +1,17 @@
+__pycache__/
+.pytest_cache/
+*.pyc
+/data/
+*.mp4
+*.wav
+*.zip
+checkpoints/
+models/
+embeddings/
+frames/
+evidence/
+predictions/
+artifacts/
+.pi-glla/
+.pi-subagents/
+*.partial

@@ -1,0 +1,16 @@
+{
+  "challenge":2702,
+  "profile":"baptinjean",
+  "model":"Molmo2-8B",
+  "gpu":"A100-80GB",
+  "max_fps":2,
+  "specialist_prompts":true,
+  "prefix":"molmo_low",
+  "validation_questions":454,
+  "correct":332,
+  "accuracy":0.7312775330,
+  "status":"completed_not_selected",
+  "comparison":{"prior_molmo_v2":0.7379,"prior_label_free_router":0.7863},
+  "decision":"Reject; slightly below prior Molmo validation and not applied to test.",
+  "modal_app":"ap-ZRYBi5h9UEtOQMp3VHdLNP"
+}

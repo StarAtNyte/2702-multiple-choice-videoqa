@@ -1,0 +1,18 @@
+{
+  "challenge": 2702,
+  "purpose": "Frozen complete fallback and current best public candidate",
+  "status": "submitted_public_best_existing",
+  "profile": "baptinjean",
+  "artifact": "Modal: /data/2702-multiple-choice-videoqa/predictions/test_submission_tomorrow_candidate.json",
+  "questions": 13370,
+  "source": "test_submission_special.json (Molmo specialist baseline)",
+  "validation": {
+    "molmo_v2": 0.7379,
+    "qwen3": 0.6476,
+    "label_free_tag_router": 0.7863,
+    "oracle_not_deployable": 0.8524
+  },
+  "next_action": "Retain as fallback; public specialist submission 579708 is the current best while routed Qwen3 test inference remains unavailable.",
+  "submission_phase": 5342,
+  "submission_status": "daily_limit_reached_on_2026-08-22"
+}

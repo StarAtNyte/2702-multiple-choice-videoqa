@@ -1,0 +1,13 @@
+{
+  "challenge":2702,
+  "profile":"baptinjean",
+  "method":"OpenCV optical-flow point propagation",
+  "frame_count":48,
+  "validation_subset":"point_tracking",
+  "scored":15,
+  "correct":0,
+  "accuracy":0.0,
+  "status":"completed_not_selected",
+  "decision":"Reject; dense sampling did not improve the point specialist and was worse than the earlier 6/18 prototype.",
+  "modal_app":"ap-IIqJGhNLMkFzAlgvpiCrpj"
+}

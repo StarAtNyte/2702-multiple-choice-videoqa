@@ -1,0 +1,15 @@
+{
+  "challenge": 2702,
+  "phase": 5342,
+  "submission_id": 580119,
+  "status": "finished",
+  "overall_top1": 0.728646,
+  "original_set_top1": 0.778713,
+  "additional_set_top1": 0.415309,
+  "method": "Molmo2-8B specialist prompt baseline",
+  "artifact_questions": 13370,
+  "artifact_source": "predictions/test_submission_final.json (byte-identical to predictions/test_submission_tomorrow_candidate.json)",
+  "local_validation": {"expected": 13370, "scored": 13370, "errors": 0},
+  "submitted_publicly": true,
+  "notes": "Fresh resubmission of the already-validated best candidate (same content as prior submission 579708) via evalai CLI with a session-provided auth token, after the daily submission limit from 2026-08-22 reset. Scores match 579708 exactly, confirming reproducibility. No newer candidate from this session (32B FP8 fixes, CoTracker3 fixes) beat this baseline on validation, so nothing changed in the submitted method."
+}
