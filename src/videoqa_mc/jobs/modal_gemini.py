@@ -19,8 +19,8 @@ import time
 from pathlib import Path
 from typing import Any
 import modal
-from mcqa_core import make_answer
-from question_planner import classify
+from videoqa_mc.mcqa_core import make_answer
+from videoqa_mc.question_planner import classify
 
 ROOT = Path('/data/2702-multiple-choice-videoqa')
 MODEL = 'gemini-3.7-flash'
@@ -31,8 +31,7 @@ app = modal.App('unified-mcqa-2702-gemini')
 vol = modal.Volume.from_name('perception-test-2026-data', create_if_missing=False)
 img = (modal.Image.debian_slim(python_version='3.11').apt_install('ffmpeg')
        .pip_install('google-genai', 'google-auth')
-       .add_local_python_source('mcqa_core')
-       .add_local_python_source('question_planner'))
+       .add_local_python_source('videoqa_mc'))
 
 # split -> (annotation glob-or-path, video roots to search, prediction subdir,
 # molmo fallback prediction dir)

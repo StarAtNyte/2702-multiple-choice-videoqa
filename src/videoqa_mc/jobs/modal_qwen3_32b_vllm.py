@@ -3,12 +3,12 @@ from __future__ import annotations
 import json,re,sys,traceback
 from pathlib import Path
 import modal
-from mcqa_core import make_answer
+from videoqa_mc.mcqa_core import make_answer
 ROOT=Path('/data/2702-multiple-choice-videoqa'); MODEL='Qwen/Qwen3-VL-32B-Instruct-FP8'
 app=modal.App('unified-mcqa-qwen3-32b-vllm')
 vol=modal.Volume.from_name('perception-test-2026-data',create_if_missing=False)
-img=(modal.Image.from_registry('nvidia/cuda:12.8.1-devel-ubuntu22.04', add_python='3.11').apt_install('ffmpeg').pip_install('vllm>=0.10.0','qwen-vl-utils','torchvision').env({'HF_HOME':str(ROOT/'models/huggingface'),'VLLM_USE_V1':'0'}).add_local_python_source('mcqa_core'))
-@app.function(image=modal.Image.debian_slim(python_version='3.11').add_local_python_source('mcqa_core'),volumes={'/data':vol},timeout=300)
+img=(modal.Image.from_registry('nvidia/cuda:12.8.1-devel-ubuntu22.04', add_python='3.11').apt_install('ffmpeg').pip_install('vllm>=0.10.0','qwen-vl-utils','torchvision').env({'HF_HOME':str(ROOT/'models/huggingface'),'VLLM_USE_V1':'0'}).add_local_python_source('videoqa_mc'))
+@app.function(image=modal.Image.debian_slim(python_version='3.11').add_local_python_source('videoqa_mc'),volumes={'/data':vol},timeout=300)
 def purge(prefix:str='qwen3_32b_fp8_fps05'):
  vol.reload(); n=0
  for p in (ROOT/'predictions/validation').glob(f'{prefix}_*'):

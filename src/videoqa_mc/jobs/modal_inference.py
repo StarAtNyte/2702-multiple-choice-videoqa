@@ -15,8 +15,8 @@ from typing import Any
 
 import modal
 
-from mcqa_core import make_answer, validate_predictions
-from question_planner import classify
+from videoqa_mc.mcqa_core import make_answer, validate_predictions
+from videoqa_mc.question_planner import classify
 
 APP_NAME = "unified-mcqa-2702-inference"
 VOLUME_NAME = "perception-test-2026-data"
@@ -33,8 +33,7 @@ image = (
         "torch==2.7.1", "torchvision==0.22.1", "transformers>=4.57,<5",
     )
     .env({"HF_HOME": str(ROOT / "models" / "huggingface")})
-    .add_local_python_source("mcqa_core")
-    .add_local_python_source("question_planner")
+    .add_local_python_source('videoqa_mc')
 )
 
 

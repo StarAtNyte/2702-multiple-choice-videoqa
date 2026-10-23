@@ -73,7 +73,7 @@ The official SAM2 and CoTracker implementations were inspected as candidate spec
 
 A Hugging Face review also identified **Qwen3-VL-8B-Instruct** as a high-ROI local ablation. Its model card advertises native video understanding, 256K context, temporal/spatial position encoding, DeepStack visual features, and text–timestamp alignment—capabilities directly relevant to action order and marker localization. A Modal Qwen3 smoke job is queued but has not obtained a GPU task yet. (Later run: the full 454-question validation job completed on A10G with 12 frames/video.)
 
-The Qwen3 validation run scored **294/454 = 64.76%** standalone versus the cached Molmo validation predictions at **335/454 = 73.79%**. Despite that lower standalone score, their complementary oracle reached **387/454 = 85.24%** (at least one model correct). A simple tag-level router reached **357/454 = 78.63%**, confirming that confidence/disagreement routing—not blind replacement—is the promising next experiment. Implemented this reproducible label-free capability router in `ensemble_router.py`; it selects Qwen3 for matching/recognition/tracking-style tags and Molmo elsewhere. It is intentionally not yet applied to test until a stronger confidence signal is added. The Qwen3 first-token A–E margin experiment is running on `whitestjohn0`; on the currently available validation artifacts, naive confidence replacement is worse than Molmo (about 70% versus 73.79%), so confidence alone is not yet a valid deployment router.
+The Qwen3 validation run scored **294/454 = 64.76%** standalone versus the cached Molmo validation predictions at **335/454 = 73.79%**. Despite that lower standalone score, their complementary oracle reached **387/454 = 85.24%** (at least one model correct). A simple tag-level router reached **357/454 = 78.63%**, confirming that confidence/disagreement routing—not blind replacement—is the promising next experiment. Implemented this reproducible label-free capability router in `src/videoqa_mc/ensemble_router.py`; it selects Qwen3 for matching/recognition/tracking-style tags and Molmo elsewhere. It is intentionally not yet applied to test until a stronger confidence signal is added. The Qwen3 first-token A–E margin experiment is running on `whitestjohn0`; on the currently available validation artifacts, naive confidence replacement is worse than Molmo (about 70% versus 73.79%), so confidence alone is not yet a valid deployment router.
 
 A direct review of the Perception Test 2025 unified-VQA report provides a stronger architecture signal than another local prompt ablation: its best zero-shot submission used a **dual-model Seed 1.6 Vision + Qwen-VL-Max fallback**, reaching 83.7% original and 65.4% novel-set accuracy. Its best fine-tuned submission combined **Qwen-2.5-VL with GLM-4.5V and Seed-1.6-Vision APIs**. The report also notes a SAM2 + AllTracker pipeline as the leading approach for the separate unified point/object tracking task. Therefore the highest-ROI path to 85% is a confidence-routed multi-model ensemble (hosted strong VLM plus local Molmo), with deterministic tracking/bar specialists as fallback—not Molmo-only inference. A first CPU optical-flow point-tracking prototype was tested on all 18 point-tracking validation questions and scored only **6/18 (33.3%)**, so it is not a replacement for a learned tracker yet; the specialist lane was stopped rather than applied blindly.
 
@@ -81,7 +81,7 @@ A direct review of the Perception Test 2025 unified-VQA report provides a strong
 
 Two concrete bugs found and fixed, not model-size limitations:
 
-1. **32B FP8 vLLM job silently died at 32/454.** `modal_qwen3_32b_vllm.py` had no
+1. **32B FP8 vLLM job silently died at 32/454.** `src/videoqa_mc/jobs/modal_qwen3_32b_vllm.py` had no
    try/except around per-question generation/parsing; one unparseable answer
    (`max_tokens=8` truncation) raised and killed the whole 12h H100 job. The
    56.25% figure quoted for it was noise from an incomplete n=32 run, not
@@ -93,8 +93,8 @@ Two concrete bugs found and fixed, not model-size limitations:
    still unresolved — a rerun should still be compared against an 8B run using
    the *same* native-video path before concluding anything about model size.
 2. **CoTracker3 point-tracking specialist scored 6.7%, below the 20% chance
-   floor for 5-choice questions** (`modal_cotracker.py`, and the OpenCV
-   optical-flow variant in `modal_specialists.py` scored 0%/33%). Root cause:
+   floor for 5-choice questions** (`src/videoqa_mc/jobs/modal_cotracker.py`, and the OpenCV
+   optical-flow variant in `src/videoqa_mc/jobs/modal_specialists.py` scored 0%/33%). Root cause:
    `load_frames` uniformly resampled every video down to a fixed 64 frames
    regardless of source length/fps, leaving multi-frame motion gaps the
    tracker could not bridge. Official CoTracker3 usage
@@ -187,7 +187,7 @@ Perception Test MC-VQA challenge winners:
   - **CoT room + explicit answer anchor**: their prompt used "think step by
     step" style prompting; our scripts capped `max_tokens=8` with zero room to
     reason, forcing an immediate raw letter guess. Now changed in
-    `modal_qwen3_32b_vllm.py` to allow 128 tokens ending in `Answer: <letter>`,
+    `src/videoqa_mc/jobs/modal_qwen3_32b_vllm.py` to allow 128 tokens ending in `Answer: <letter>`,
     parsed by anchor-first regex. Not yet validated on a full run.
 
 Not yet implemented, deferred pending direction: temporal-localization

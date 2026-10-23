@@ -3,12 +3,12 @@ from __future__ import annotations
 import json,re,tempfile,subprocess
 from pathlib import Path
 import modal
-from mcqa_core import make_answer
+from videoqa_mc.mcqa_core import make_answer
 ROOT=Path('/data/2702-multiple-choice-videoqa')
 MODEL='Qwen/Qwen3-VL-8B-Instruct'
 app=modal.App('unified-mcqa-2702-qwen3')
 volume=modal.Volume.from_name('perception-test-2026-data',create_if_missing=False)
-image=(modal.Image.debian_slim(python_version='3.11').apt_install('ffmpeg').pip_install('accelerate>=1.9','qwen-vl-utils','torch==2.7.1','torchvision==0.22.1','transformers>=4.57.1').env({'HF_HOME':str(ROOT/'models/huggingface')}).add_local_python_source('mcqa_core'))
+image=(modal.Image.debian_slim(python_version='3.11').apt_install('ffmpeg').pip_install('accelerate>=1.9','qwen-vl-utils','torch==2.7.1','torchvision==0.22.1','transformers>=4.57.1').env({'HF_HOME':str(ROOT/'models/huggingface')}).add_local_python_source('videoqa_mc'))
 
 def _video(key,source):
  for root in (ROOT/'raw/validation',ROOT/'raw/full_validation'):

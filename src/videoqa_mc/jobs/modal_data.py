@@ -16,8 +16,8 @@ from typing import Any
 
 import modal
 
-from mcqa_core import load_json, question_count
-from folds import split_records
+from videoqa_mc.mcqa_core import load_json, question_count
+from videoqa_mc.folds import split_records
 
 APP_NAME = "unified-mcqa-2702"
 VOLUME_NAME = "perception-test-2026-data"
@@ -36,8 +36,7 @@ volume = modal.Volume.from_name(VOLUME_NAME, create_if_missing=True)
 image = (
     modal.Image.debian_slim(python_version="3.11")
     .apt_install("curl", "unzip")
-    .add_local_python_source("mcqa_core")
-    .add_local_python_source("folds")
+    .add_local_python_source('videoqa_mc')
 )
 
 

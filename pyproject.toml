@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "perception-mc-videoqa"
+version = "0.1.0"
+description = "Capability-routed multiple-choice video question answering with Modal."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = ["modal>=1.5,<2"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9"]
+
+[project.urls]
+Repository = "https://github.com/StarAtNyte/2702-multiple-choice-videoqa"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+where = ["src"]

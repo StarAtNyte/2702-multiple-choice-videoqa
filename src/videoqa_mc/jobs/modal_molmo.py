@@ -9,7 +9,7 @@ from typing import Any
 
 import modal
 
-from mcqa_core import make_answer
+from videoqa_mc.mcqa_core import make_answer
 
 ROOT = Path("/data/2702-multiple-choice-videoqa")
 MODEL_NAME = os.getenv("MCQA_MOLMO_MODEL", "allenai/Molmo2-8B")
@@ -20,7 +20,7 @@ image = (
     .apt_install("ffmpeg", "ca-certificates")
     .pip_install("accelerate>=1.9,<2", "decord2", "einops", "molmo-utils", "pillow>=11,<13", "torch==2.7.1", "torchvision==0.22.1", "transformers==4.57.1")
     .env({"HF_HOME": str(ROOT / "models" / "huggingface")})
-    .add_local_python_source("mcqa_core")
+    .add_local_python_source('videoqa_mc')
 )
 
 

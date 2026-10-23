@@ -8,13 +8,13 @@ from typing import Any
 
 import modal
 
-from mcqa_core import make_answer, question_count, validate_predictions
+from videoqa_mc.mcqa_core import make_answer, question_count, validate_predictions
 
 ROOT = Path("/data/2702-multiple-choice-videoqa")
 VOLUME_NAME = "perception-test-2026-data"
 app = modal.App("unified-mcqa-2702-baselines")
 volume = modal.Volume.from_name(VOLUME_NAME, create_if_missing=False)
-image = modal.Image.debian_slim(python_version="3.11").add_local_python_source("mcqa_core")
+image = modal.Image.debian_slim(python_version="3.11").add_local_python_source('videoqa_mc')
 
 
 def _single_json(directory: Path) -> Path:

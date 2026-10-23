@@ -1,8 +1,8 @@
 import unittest
 
-from mcqa_core import make_answer, question_count, validate_predictions
-from question_planner import classify
-from folds import split_records
+from videoqa_mc.mcqa_core import make_answer, question_count, validate_predictions
+from videoqa_mc.question_planner import classify
+from videoqa_mc.folds import split_records
 
 
 class MCQACoreTests(unittest.TestCase):
